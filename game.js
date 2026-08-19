@@ -4,9 +4,11 @@ const scripts = [
   "data-3.js",
   "data-4.js",
   "data-init.js",
+  "era-data.js",
   "profiles.js",
+  "era-model.js",
   "gameplay.js",
-  "catalog.js"
+  "era-catalog.js"
 ];
 (async () => {
   for (const src of scripts) {
