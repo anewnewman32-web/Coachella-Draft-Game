@@ -7,6 +7,7 @@ const scripts = [
   "era-data.js",
   "profiles.js",
   "era-model.js",
+  "balance-model.js",
   "gameplay.js",
   "era-catalog.js"
 ];
