@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Headliner Draft — Rarity Edition</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div id="screen-home" class="screen active">
+  <div class="wrap home">
+    <div class="homeInner">
+      <div class="homeKicker">Build the impossible festival</div>
+      <h1>HEADLINER<br>DRAFT</h1>
+      <p class="homeSub">Six rounds. Six artist options per spin. Hunt Legendary pulls, use your decade and genre rerolls wisely, and build an S-tier festival.</p>
+      <div class="bestEverHome">
+        <span>Highest ever score</span>
+        <strong id="homeBestScore">—</strong>
+        <small id="homeBestGrade">No completed run yet</small>
+      </div>
+      <div class="homeMenu">
+        <button class="menuBtn primary" id="homePlayBtn" type="button">Play</button>
+        <button class="menuBtn" id="homeRulesBtn" type="button">Rules</button>
+        <button class="menuBtn" id="homeRankingsBtn" type="button">Artist Rankings</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="screen-setup" class="screen">
+  <div class="wrap setupPage">
+    <div class="pageTop">
+      <div>
+        <h2>Start Game</h2>
+        <div style="color:var(--muted);font-size:13px;margin-top:4px">Choose how you want to draft.</div>
+      </div>
+      <button class="backBtn" id="setupHomeBtn" type="button">← Home</button>
+    </div>
+
+    <div class="setupGrid">
+      <button class="setupChoice active" id="modeSoloBtn" type="button">
+        <strong>Solo</strong>
+        <span>Build one six-artist lineup and chase the highest possible grade.</span>
+      </button>
+      <button class="setupChoice" id="modeH2HBtn" type="button">
+        <strong>Head-to-Head</strong>
+        <span>Two players draft from the same spin. First pick alternates every round; highest final score wins.</span>
+      </button>
+    </div>
+
+    <div class="hardToggle">
+      <label for="hardModeToggle">
+        <input id="hardModeToggle" type="checkbox">
+        <span>
+          <b>Hard Mode — Hidden Stats</b>
+          <small>During the draft, Headliner Score and all six numerical artist stats are hidden. You still see the artist name, rarity and qualitative archetype. Everything is revealed after the final pick.</small>
+        </span>
+      </label>
+    </div>
+
+    <button class="startBtn" id="startGameBtn" type="button">Start Draft</button>
+  </div>
+</div>
+
+<div id="screen-game" class="screen">
+<div class="wrap">
+  <div class="gameNav"><button class="backBtn" id="gameHomeBtn" type="button">← Home</button></div><div class="modeNotice" id="modeNotice"></div><div class="turnBanner" id="turnBanner"></div>
+  <header>
+    <div>
+      <h1>HEADLINER<br>DRAFT</h1>
+      <p class="sub">Draft six artists from a much deeper genre × decade pool. Pull rarity controls how often names appear; stats determine how strong your festival is. Niche genres can still contain elite headliners. <b>S is the win condition.</b></p>
+    </div>
+    <div class="topbadges"><span class="pill">6 slots</span><span class="pill">6 options</span><span class="pill">2 rerolls</span></div>
+  </header>
+
+  <div class="layout">
+    <main class="panel main">
+      <div class="scorebar">
+        <div class="metric"><div class="label" id="gradeLabel">Current grade</div><div class="value" id="gradeMetric">—</div><div class="hint">S = win</div></div>
+        <div class="metric"><div class="label" id="scoreLabel">Lineup score</div><div class="value" id="scoreMetric">0.0</div><div class="hint">out of 100</div></div>
+        <div class="metric"><div class="label" id="bonusLabel">Diversity bonus</div><div class="value" id="bonusMetric">+0.0</div><div class="hint">max +4</div></div>
+        <div class="metric"><div class="label" id="bestLabel">Best pull</div><div class="value" id="bestMetric">—</div><div class="hint" id="bestHint">no picks yet</div></div>
+        <div class="metric"><div class="label">Highest ever</div><div class="value" id="highScoreMetric">—</div><div class="hint" id="highScoreHint">no completed run</div></div>
+      </div>
+
+      <div class="toast" id="toast" aria-live="polite"></div>
+      <div class="roundrow"><strong id="roundLabel">Round 1 of 6</strong><span class="pill" id="rerollBadge">Decade ready · Genre ready</span></div>
+      <div class="prompt"><span class="tag" id="genreTag">Genre</span><span class="x">×</span><span class="tag" id="decadeTag">Decade</span></div>
+      <div class="options" id="options"></div>
+      <div class="controls"><button class="ctrl" id="decadeRerollBtn" type="button">↻ Reroll decade</button><button class="ctrl" id="genreRerollBtn" type="button">↻ Reroll genre</button><button class="ctrl" id="restartBtn" type="button">New attempt</button></div>
+
+      <section class="finish" id="finish">
+        <div id="postgame"></div>
+      </section>
+    </main>
+
+    <aside class="panel side">
+      <div class="sideHead"><h2 id="lineupTitle">Your lineup</h2><span class="pill" id="countPill">0 / 6</span></div>
+      <div class="lineup" id="lineup"></div>
+      <div class="rules">
+        <b>Scoring:</b> artist score = 22% Live + 17% Hits + 18% Influence + 13% Buzz + 15% Critic + 15% Catalog. Your six-artist average gets up to <b>+4 diversity</b> for mixing genres and decades.<br><br>
+        <b>Grades:</b> F &lt; 58 · D 58 · C 67 · B 78 · A 87 · <b>S 93+</b>.<br><br>
+        <b>Rerolls:</b> once per attempt you may reroll the <b>decade</b> while keeping the genre, and once per attempt you may reroll the <b>genre</b> while keeping the current decade.<br>
+        <div class="help">
+          <b>Pull rarity</b>
+          <div class="rarityRow"><span style="color:var(--common)">Common</span><span>most likely</span></div>
+          <div class="rarityRow"><span style="color:var(--uncommon)">Uncommon</span><span>frequent</span></div>
+          <div class="rarityRow"><span style="color:var(--rare)">Rare</span><span>tough pull</span></div>
+          <div class="rarityRow"><span style="color:var(--epic)">Epic</span><span>very scarce</span></div>
+          <div class="rarityRow"><span style="color:var(--legendary)">Legendary</span><span>jackpot</span></div>
+        </div>
+        <br>Ratings and rarity are <b>game design values</b>, not objective rankings. Rarity means pull scarcity—not cultural importance—and every genre has high-ceiling cards.
+      </div>
+    </aside>
+  </div>
+</div>
+</div>
+
+<div id="screen-rules" class="screen">
+  <div class="wrap rulesPage">
+    <div class="pageTop">
+      <h2>Rules</h2>
+      <button class="backBtn" id="rulesHomeBtn" type="button">← Home</button>
+    </div>
+    <div class="rulesGrid">
+      <section class="ruleBlock">
+        <h3>Draft</h3>
+        <p>Fill six headliner slots. Each round rolls a genre and decade and presents six artists. Choose exactly one artist to lock into your lineup.</p>
+      </section>
+      <section class="ruleBlock">
+        <h3>Win condition</h3>
+        <p>Your six picks produce a final festival score. Reach <b>S tier at 93+</b> to win.</p>
+        <div class="gradeStrip">
+          <span class="gradeChip grade-F">F</span><span class="gradeChip grade-D">D</span><span class="gradeChip grade-C">C</span>
+          <span class="gradeChip grade-B">B</span><span class="gradeChip grade-A">A</span><span class="gradeChip grade-S">S</span>
+        </div>
+      </section>
+      <section class="ruleBlock"><h3>Hard Mode</h3><p>Enable it before starting. Numerical card stats, Headliner Score and live lineup score are hidden during the draft; qualitative archetypes remain as clues. Full numbers return after the draft.</p></section>
+      <section class="ruleBlock"><h3>Head-to-Head</h3><p>Two players share each six-card spin and draft one artist each. The first picker alternates each round. The match shares one decade reroll and one genre reroll, usable only before the first pick of a round.</p></section>
+      <section class="ruleBlock">
+        <h3>Rerolls</h3>
+        <p>You get two independent one-use rerolls. <b>Decade Reroll</b> keeps the genre and changes the decade. <b>Genre Reroll</b> keeps the decade and changes the genre.</p>
+      </section>
+      <section class="ruleBlock">
+        <h3>Stats</h3>
+        <p>Every artist has Live, Hits, Influence, Buzz, Critic, and Catalog ratings. Headliner Score weights them at 22%, 17%, 18%, 13%, 15%, and 15% respectively.</p>
+      </section>
+      <section class="ruleBlock">
+        <h3>Rarity</h3>
+        <p>Common → Uncommon → Rare → Epic → Legendary. Rarity controls how likely an artist is to appear in a spin. It does <b>not</b> directly determine their stats.</p>
+      </section>
+      <section class="ruleBlock">
+        <h3>Diversity bonus</h3>
+        <p>Mixing genres and decades adds up to +4 points to the final lineup score, rewarding a broader festival without overpowering artist quality.</p>
+      </section>
+    </div>
+  </div>
+</div>
+
+<div id="screen-rankings" class="screen">
+  <div class="wrap rankPage">
+    <div class="pageTop">
+      <div>
+        <h2>Artist Rankings</h2>
+        <div style="color:var(--muted);font-size:13px;margin-top:4px">Complete card catalogue</div>
+      </div>
+      <button class="backBtn" id="rankingsHomeBtn" type="button">← Home</button>
+    </div>
+
+    <div class="catalogTools">
+      <div>
+        <label for="catalogSearch">Search artist</label>
+        <input id="catalogSearch" type="search" placeholder="Search names…" autocomplete="off">
+      </div>
+      <div>
+        <label for="genreFilter">Genre</label>
+        <select id="genreFilter"><option value="">All genres</option></select>
+      </div>
+      <div>
+        <label for="decadeFilter">Decade</label>
+        <select id="decadeFilter"><option value="">All decades</option></select>
+      </div>
+      <div>
+        <label for="rarityFilter">Rarity</label>
+        <select id="rarityFilter">
+          <option value="">All rarities</option>
+          <option>Legendary</option><option>Epic</option><option>Rare</option><option>Uncommon</option><option>Common</option>
+        </select>
+      </div>
+      <div>
+        <label for="sortFilter">Rank by</label>
+        <select id="sortFilter">
+          <option value="overall">Overall</option>
+          <option value="live">Live</option>
+          <option value="hits">Hits</option>
+          <option value="influence">Influence</option>
+          <option value="buzz">Buzz</option>
+          <option value="critic">Critic</option>
+          <option value="catalog">Catalog</option>
+          <option value="name">Name A–Z</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="catalogSummary">
+      <span id="catalogCount">0 artists</span>
+      <span>Game-design ratings · rarity = pull scarcity</span>
+    </div>
+    <div class="catalogGrid" id="catalogGrid" aria-live="polite"></div>
+  </div>
+</div>
+
+
+
+<script src="game.js" defer></script>
+</body>
+</html>
