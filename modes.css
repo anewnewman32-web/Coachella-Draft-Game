@@ -1,0 +1,73 @@
+  /* v12: setup, pictures, archetypes, head-to-head, postgame */
+  .setupPage{max-width:820px;margin:0 auto}
+  .setupGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+  .setupChoice{
+    border:1px solid var(--border);background:var(--panel);border-radius:18px;padding:18px;
+    color:var(--text);text-align:left;cursor:pointer
+  }
+  .setupChoice.active{border-color:var(--accent);background:var(--panel2)}
+  .setupChoice strong{display:block;font-size:18px;margin-bottom:5px}
+  .setupChoice span{color:var(--muted);font-size:13px;line-height:1.45}
+  .hardToggle{margin:14px 0;border:1px solid var(--border);background:var(--panel);border-radius:18px;padding:16px}
+  .hardToggle label{display:flex;gap:12px;align-items:flex-start;cursor:pointer}
+  .hardToggle input{margin-top:4px;transform:scale(1.25)}
+  .hardToggle b{display:block;margin-bottom:4px}
+  .hardToggle small{display:block;color:var(--muted);line-height:1.45}
+  .startBtn{width:100%;border:0;border-radius:16px;padding:15px 18px;background:var(--accent);color:#120e17;font-weight:950;font-size:17px;cursor:pointer}
+
+  .modeNotice{display:none;margin-bottom:12px;border:1px solid var(--border);border-radius:13px;padding:10px 12px;color:var(--muted);font-size:13px}
+  .modeNotice.show{display:block}
+  .turnBanner{display:none;margin:0 0 12px;border:1px solid var(--border);background:var(--panel2);border-radius:14px;padding:11px 13px;font-weight:900}
+  .turnBanner.show{display:flex;justify-content:space-between;gap:10px;align-items:center}
+  .playerTag{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--border);border-radius:999px;padding:5px 9px;font-size:11px}
+  .h2hLineups{display:grid;gap:14px}
+  .playerLineup{border-top:1px solid var(--border);padding-top:12px}
+  .playerLineup:first-child{border-top:0;padding-top:0}
+  .playerLineupHead{display:flex;justify-content:space-between;gap:8px;align-items:center;margin-bottom:8px}
+  .playerLineupHead b{font-size:14px}
+
+  .archetype{display:inline-flex;align-items:center;border:1px solid var(--border);border-radius:999px;padding:4px 7px;font-size:9px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;margin:5px 5px 0 0}
+  .hardHidden{
+    border:1px dashed var(--border);border-radius:12px;padding:14px;text-align:center;
+    color:var(--muted);font-size:12px;margin-top:10px
+  }
+  .hardMode .scorebar .metric:nth-child(-n+3) .value{filter:blur(7px);user-select:none}
+  .hardMode .miniScore{visibility:hidden}
+  .hardMode .stats,.hardMode .overall{display:none}
+  .hardMode .artist{min-height:300px}
+
+
+  .postgameWrap{display:grid;gap:18px}
+  .resultHero{display:flex;justify-content:space-between;gap:16px;align-items:center}
+  .resultHero h2{margin:0 0 5px}
+  .posterGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+  .lineupPoster{
+    border:1px solid var(--border);border-radius:18px;padding:16px;
+    background:linear-gradient(180deg,var(--panel2),var(--panel))
+  }
+  .posterHeader{text-align:center;border-bottom:1px solid var(--border);padding-bottom:12px;margin-bottom:12px}
+  .posterHeader .posterTitle{font-size:22px;font-weight:950;letter-spacing:.1em}
+  .posterHeader small{color:var(--muted)}
+  .posterArtists{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+  .posterArtist{position:relative;min-height:90px;border-radius:12px;overflow:hidden;background:var(--panel2);border:1px solid var(--border);display:flex;align-items:flex-end}
+  .posterArtistName{padding:10px;font-weight:950}
+  .posterArtistName small{display:block;font-size:9px;font-weight:700;color:#ddd;margin-top:2px}
+  .breakdown{
+    border:1px solid var(--border);border-radius:18px;padding:15px;background:var(--panel)
+  }
+  .breakdown h3{margin:0 0 11px}
+  .breakdownSummary{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px}
+  .breakMetric{background:var(--panel2);border-radius:11px;padding:10px}
+  .breakMetric span{display:block;color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:.06em}
+  .breakMetric b{font-size:18px}
+  .breakStats{display:grid;grid-template-columns:repeat(2,1fr);gap:7px 12px}
+  .breakStat{display:flex;justify-content:space-between;border-bottom:1px solid var(--border);padding:5px 0;font-size:12px}
+  .winnerBanner{border:1px solid var(--accent);border-radius:14px;padding:12px;text-align:center;font-weight:950;background:var(--panel2)}
+
+  @media(max-width:850px){
+    .setupGrid,.posterGrid{grid-template-columns:1fr}
+  }
+  @media(max-width:570px){
+    .posterArtists,.breakdownStats,.breakdownSummary{grid-template-columns:1fr 1fr}
+  }
+
