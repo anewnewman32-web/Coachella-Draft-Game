@@ -1,0 +1,79 @@
+  /* App navigation / homepage */
+  .screen{display:none}
+  .screen.active{display:block}
+  .home{
+    min-height:72vh;display:grid;place-items:center;padding:34px 0
+  }
+  .homeInner{width:min(720px,100%);text-align:center}
+  .homeKicker{color:var(--muted);font-size:12px;font-weight:900;letter-spacing:.16em;text-transform:uppercase;margin-bottom:14px}
+  .home h1{margin:0;font-size:clamp(48px,9vw,92px);line-height:.86;letter-spacing:-.07em}
+  .homeSub{max-width:610px;margin:22px auto 28px;color:var(--muted);font-size:16px;line-height:1.55}
+  .bestEverHome{
+    display:inline-flex;flex-direction:column;align-items:center;gap:3px;
+    margin:0 auto 18px;padding:12px 18px;border:1px solid var(--border);
+    border-radius:16px;background:var(--panel)
+  }
+  .bestEverHome span{color:var(--muted);font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.1em}
+  .bestEverHome strong{font-size:28px;line-height:1}
+  .bestEverHome small{color:var(--muted);font-size:11px}
+  .homeMenu{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .menuBtn{
+    border:1px solid var(--border);background:var(--panel);color:var(--text);
+    min-height:82px;border-radius:18px;padding:16px;font-size:17px;font-weight:900;
+    cursor:pointer;transition:.16s transform,.16s border-color,.16s background
+  }
+  .menuBtn:hover{transform:translateY(-2px);border-color:var(--accent);background:var(--panel2)}
+  .menuBtn.primary{background:var(--accent);border-color:var(--accent);color:#120e17}
+  .pageTop{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px}
+  .pageTop h2{margin:0;font-size:28px}
+  .backBtn{
+    border:1px solid var(--border);background:var(--panel);color:var(--text);
+    border-radius:12px;padding:10px 13px;font-weight:800;cursor:pointer
+  }
+
+  /* Rules */
+  .rulesPage{max-width:800px;margin:0 auto}
+  .rulesGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+  .ruleBlock{border:1px solid var(--border);background:var(--panel);border-radius:18px;padding:18px}
+  .ruleBlock h3{margin:0 0 8px;font-size:17px}
+  .ruleBlock p{margin:0;color:var(--muted);line-height:1.55}
+  .gradeStrip{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}
+  .gradeChip{border:1px solid var(--border);border-radius:10px;padding:7px 10px;font-weight:900}
+
+  /* Rankings catalogue */
+  .rankPage{max-width:1180px;margin:0 auto}
+  .catalogTools{
+    display:grid;grid-template-columns:minmax(220px,1.4fr) repeat(4,minmax(130px,.7fr));
+    gap:10px;margin-bottom:12px
+  }
+  .catalogTools label{display:block;color:var(--muted);font-size:11px;font-weight:800;margin-bottom:5px;text-transform:uppercase;letter-spacing:.08em}
+  .catalogTools input,.catalogTools select{
+    width:100%;border:1px solid var(--border);background:var(--panel);color:var(--text);
+    border-radius:12px;padding:11px 12px;font:inherit
+  }
+  .catalogSummary{display:flex;justify-content:space-between;gap:10px;align-items:center;color:var(--muted);font-size:13px;margin:10px 0 14px}
+  .catalogGrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+  .catalogCard{
+    border:1px solid var(--border);background:var(--panel);border-radius:17px;padding:14px
+  }
+  .catalogTop{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+  .catalogName{font-size:17px;font-weight:900;letter-spacing:-.02em}
+  .catalogScore{font-size:25px;font-weight:950;text-align:right;line-height:1}
+  .catalogScore small{display:block;color:var(--muted);font-size:9px;margin-top:4px;text-transform:uppercase;letter-spacing:.08em}
+  .catalogMeta{color:var(--muted);font-size:11px;line-height:1.4;margin:8px 0 10px}
+  .catalogStats{display:grid;grid-template-columns:repeat(2,1fr);gap:5px 10px}
+  .catalogStat{display:flex;justify-content:space-between;gap:8px;font-size:11px;border-bottom:1px solid rgba(255,255,255,.06);padding:3px 0}
+  .catalogStat span:first-child{color:var(--muted)}
+  .catalogEmpty{grid-column:1/-1;border:1px dashed var(--border);border-radius:16px;padding:32px;text-align:center;color:var(--muted)}
+  .rarityFilterLegend{display:flex;gap:6px;flex-wrap:wrap}
+  .gameNav{display:flex;justify-content:flex-end;margin-bottom:10px}
+  @media(max-width:900px){
+    .catalogTools{grid-template-columns:repeat(2,1fr)}
+    .catalogGrid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  }
+  @media(max-width:620px){
+    .homeMenu,.rulesGrid,.catalogGrid{grid-template-columns:1fr}
+    .catalogTools{grid-template-columns:1fr}
+    .home{min-height:auto;padding-top:24px}
+  }
+
