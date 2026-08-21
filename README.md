@@ -8,35 +8,54 @@ The game uses **era-specific cards on one global rating scale**:
 
 - Rarity controls pull frequency only; it does not set stat strength.
 - The same artist can appear in multiple decades and genres when their career supports it.
-- Each decade is a different card with different stats. For example, 2000s Eminem is intentionally much stronger than 2020s Eminem.
-- Long careers can span many pools. Taylor Swift appears in both Country and Pop and has separate 2000s, 2010s, and 2020s cards.
-- Cards are balanced onto a smoother usable range, with a **70 overall floor** so weak cards are still viable festival picks rather than dead pulls.
-- Individual stats can still have pronounced weaknesses, preserving archetypes even when overall scores are reasonable.
-- Genre × decade combinations have a **historical relevance / scene-depth weighting**. A culturally important combination tends to surface a deeper set of strong choices, but relevance does not secretly change a card's displayed rating.
-- No genre or decade is hard-coded to be the strongest. The weighting is contextual across the full matrix: e.g. Disco is deeper in the 1970s, Hip-Hop in the 1990s–2020s, Metal in the 1980s–2000s, Jazz in the 1960s–1970s, K-Pop in the 2010s–2020s, etc.
+- Each decade is a different card with different stats. Peak-era cards can be substantially stronger than later cards when an artist's real career relevance or output declined.
+- Long careers span many pools. Taylor Swift can appear in Country and Pop; Eminem has separate 1990s, 2000s, 2010s and 2020s cards; the same approach now applies broadly to long-running artists.
+- The roster has been expanded with major omissions including **Sting, KISS, Journey, Rush, Genesis, Phil Collins, Peter Gabriel, Santana, Cher, Kylie Minogue, Rakim, Luther Vandross, Judas Priest, Oscar Peterson, Joan Baez, King Sunny Adé, BoA** and many more.
+- Cards keep the smoother **70 overall floor**, but explicit and generic career curves now make non-peak decades meaningfully weaker when warranted.
+- Genre × decade combinations use historical scene-depth weighting. Relevance affects which cards surface in a spin, not their displayed rating.
+
+## Balanced lineup scoring
+
+The lineup is graded separately in six categories:
+
+- Live
+- Hits
+- Influence
+- Buzz
+- Critic
+- Catalog
+
+The **Balanced Score is the lowest of the six lineup category averages**. The overall grade comes from that weakest category, so one huge strength cannot completely hide a weak area.
+
+Grade thresholds:
+
+- F: below 58
+- D: 58+
+- C: 67+
+- B: 78+
+- A: 87+
+- S: 93+
+
+To earn **S**, all six category averages must reach 93. The postgame report shows a grade for every category plus the overall grade.
+
+## Pool Settings
+
+Before a run, players can choose which genres and decades are eligible. This supports themed drafts, era-only games, genre-only games, and custom combinations.
 
 ## GitHub Pages
 
-This repository is structured for GitHub Pages and requires no build step.
+This repository is static and requires no build step. Publish `main` from `/ (root)` in **Settings → Pages**.
 
 Main files:
 
-- `index.html` — app markup
+- `index.html` — base app markup
 - `styles.css` and supporting CSS files — festival visual design
 - `game.js` — ordered script loader
-- `data-1.js` … `data-4.js` — base artist pools
+- `data-1.js` … `data-4.js` — original artist pools
 - `data-init.js` — base rarity and artist data
-- `era-data.js` — long-career / cross-genre appearances and era rarity
-- `profiles.js` — original card utilities and archetypes
-- `era-model.js` — global era-specific stat model
-- `balance-model.js` — 70-floor smoothing plus genre × decade relevance/depth weighting
-- `gameplay.js` — drafting, rerolls, scoring, hard mode, head-to-head
+- `era-data.js` — existing long-career / cross-genre appearances
+- `artist-expansion-v2.js` — expanded artist roster and additional long-career cards
+- `era-model.js`, `balance-model.js`, `rating-v2.js` — global era-card rating and decline model
+- `gameplay.js`, `gameplay-v2.js` — draft modes, Pool Settings, balanced scoring and refreshed UI
 - `era-catalog.js` — rankings catalogue with separate decade cards
 - `.nojekyll` — serves static files directly
-
-To publish:
-
-1. Open **Settings → Pages**.
-2. Under **Build and deployment**, select **Deploy from a branch**.
-3. Select `main` and `/ (root)`.
-4. Save.
