@@ -12,6 +12,7 @@ const scripts = [
   "rating-v2.js",
   "gameplay.js",
   "gameplay-v2.js",
+  "grade-calibration-v3.js",
   "era-catalog.js"
 ];
 (async () => {
